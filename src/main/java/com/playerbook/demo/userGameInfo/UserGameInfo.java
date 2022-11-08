@@ -9,8 +9,6 @@ public class UserGameInfo {
     private String rank;
     private String difficulty;
     private String serverName;
-    private Long user_id;
-    private Long game_id;
 
     public UserGameInfo(Long id, String userPseudo, String guild, Long level, String rank, String difficulty, String serverName, Long user_id, Long game_id) {
         this.id = id;
@@ -20,8 +18,6 @@ public class UserGameInfo {
         this.rank = rank;
         this.difficulty = difficulty;
         this.serverName = serverName;
-        this.user_id = user_id;
-        this.game_id = game_id;
     }
 
     public UserGameInfo() {
@@ -55,14 +51,6 @@ public class UserGameInfo {
         return serverName;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public Long getGame_id() {
-        return game_id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -91,11 +79,4 @@ public class UserGameInfo {
         this.serverName = serverName;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
-
-    public void setGame_id(Long game_id) {
-        this.game_id = game_id;
-    }
 }
