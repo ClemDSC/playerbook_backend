@@ -8,16 +8,15 @@ public class UserBehavior {
     private boolean isExtravert;
     private boolean isPro;
     private String employeer;
-    private Long user_id;
 
-    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer, Long user_id) {
+    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer) {
         this.id = id;
         this.isCasual = isCasual;
         this.isProactive = isProactive;
         this.isExtravert = isExtravert;
         this.isPro = isPro;
         this.employeer = employeer;
-        this.user_id = user_id;
+
     }
 
     public UserBehavior() {
@@ -47,10 +46,6 @@ public class UserBehavior {
         return employeer;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,7 +70,4 @@ public class UserBehavior {
         this.employeer = employeer;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
 }
