@@ -1,5 +1,9 @@
 package com.playerbook.demo.playerHabits;
 
+import com.playerbook.demo.user.User;
+
+import javax.persistence.OneToOne;
+
 public class PlayerHabits {
 
     private Long id;
@@ -11,6 +15,9 @@ public class PlayerHabits {
     private boolean isPVE;
     private boolean isPVP;
 
+    @OneToOne(mappedBy = "playerHabits")
+    private User user;
+
     public PlayerHabits(Long id,
                         Long frequencyPerWeek,
                         Long sessionInHours,
@@ -18,7 +25,8 @@ public class PlayerHabits {
                         boolean isHotBlooded,
                         boolean isLeader,
                         boolean isPVE,
-                        boolean isPVP) {
+                        boolean isPVP,
+                        User user) {
         this.id = id;
         this.frequencyPerWeek = frequencyPerWeek;
         this.sessionInHours = sessionInHours;
@@ -27,6 +35,7 @@ public class PlayerHabits {
         this.isLeader = isLeader;
         this.isPVE = isPVE;
         this.isPVP = isPVP;
+        this.user = user;
     }
 
     public PlayerHabits() {
@@ -94,5 +103,13 @@ public class PlayerHabits {
 
     public void setPVP(boolean PVP) {
         isPVP = PVP;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

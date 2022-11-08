@@ -1,5 +1,9 @@
 package com.playerbook.demo.userBehavior;
 
+import com.playerbook.demo.user.User;
+
+import javax.persistence.OneToOne;
+
 public class UserBehavior {
 
     private Long id;
@@ -9,14 +13,17 @@ public class UserBehavior {
     private boolean isPro;
     private String employeer;
 
-    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer) {
+    @OneToOne(mappedBy = "userBehavior")
+    private User user;
+
+    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer, User user) {
         this.id = id;
         this.isCasual = isCasual;
         this.isProactive = isProactive;
         this.isExtravert = isExtravert;
         this.isPro = isPro;
         this.employeer = employeer;
-
+        this.user = user;
     }
 
     public UserBehavior() {
@@ -70,4 +77,11 @@ public class UserBehavior {
         this.employeer = employeer;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

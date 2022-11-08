@@ -22,8 +22,15 @@ public class Game {
     private String name;
     private String photoUrl;
     private String gameUrl;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Genre> genreList;
+
+    @ManyToMany(mappedBy = "gameList")
     private List<User> userList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id", referencedColumnName = "id")
     private List<UserGameInfo> userGameInfoList;
 
 

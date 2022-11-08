@@ -5,6 +5,7 @@ import com.playerbook.demo.playerHabits.PlayerHabits;
 import com.playerbook.demo.userBehavior.UserBehavior;
 import com.playerbook.demo.userGameInfo.UserGameInfo;
 
+import javax.persistence.*;
 import java.util.List;
 
 public class User {
@@ -14,9 +15,18 @@ public class User {
     private String linkAvatar;
     private String country;
     private String biography;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "playerHabits_id", referencedColumnName = "id")
     private PlayerHabits playerHabits;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userBehavior_id", referencedColumnName = "id")
     private UserBehavior userBehavior;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Game> gameList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<UserGameInfo> userGameInfo;
 
 

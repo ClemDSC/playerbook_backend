@@ -18,6 +18,8 @@ public class Genre {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
+
+    @ManyToMany(mappedBy = "genreList")
     private List<Game> gameList;
 
     public Genre(Long id, String name, List<Game> gameList) {

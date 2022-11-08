@@ -1,5 +1,10 @@
 package com.playerbook.demo.userGameInfo;
 
+import com.playerbook.demo.game.Game;
+import com.playerbook.demo.user.User;
+
+import javax.persistence.ManyToOne;
+
 public class UserGameInfo {
 
     private Long id;
@@ -10,7 +15,13 @@ public class UserGameInfo {
     private String difficulty;
     private String serverName;
 
-    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String rank, String difficulty, String serverName, Long user_id, Long game_id) {
+    @ManyToOne()
+    private User user;
+
+    @ManyToOne()
+    private Game game;
+
+    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String rank, String difficulty, String serverName, User user, Game game) {
         this.id = id;
         this.userPseudo = userPseudo;
         this.guild = guild;
@@ -18,6 +29,8 @@ public class UserGameInfo {
         this.rank = rank;
         this.difficulty = difficulty;
         this.serverName = serverName;
+        this.user = user;
+        this.game = game;
     }
 
     public UserGameInfo() {
@@ -79,4 +92,19 @@ public class UserGameInfo {
         this.serverName = serverName;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
