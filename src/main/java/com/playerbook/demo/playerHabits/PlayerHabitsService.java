@@ -43,8 +43,8 @@ public class PlayerHabitsService {
         playerHabitsFound.setNocturnal(playerHabits.isNocturnal());
         playerHabitsFound.setHotBlooded(playerHabits.isHotBlooded());
         playerHabitsFound.setLeader(playerHabits.isLeader());
-        playerHabitsFound.setPVE(playerHabits.isPVE());
-        playerHabitsFound.setPVP(playerHabits.isPVP());
+        playerHabitsFound.setPve(playerHabits.isPve());
+        playerHabitsFound.setPvp(playerHabits.isPvp());
 
         return playerHabitsRepository.save(playerHabitsFound);
     }
