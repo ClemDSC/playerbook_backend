@@ -1,19 +1,36 @@
 package com.playerbook.demo.game;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.genre.Genre;
 import com.playerbook.demo.user.User;
 import com.playerbook.demo.userGameInfo.UserGameInfo;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
     private String photoUrl;
     private String gameUrl;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Genre> genreList;
+
+    @ManyToMany(mappedBy = "gameList")
     private List<User> userList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "game_id", referencedColumnName = "id")
     private List<UserGameInfo> userGameInfoList;
 
 

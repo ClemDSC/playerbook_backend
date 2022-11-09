@@ -1,23 +1,38 @@
 package com.playerbook.demo.userBehavior;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.playerbook.demo.user.User;
+
+import javax.persistence.*;
+
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UserBehavior {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private boolean isCasual;
     private boolean isProactive;
     private boolean isExtravert;
     private boolean isPro;
     private String employeer;
-    private Long user_id;
 
-    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer, Long user_id) {
+    @OneToOne(mappedBy = "userBehavior")
+    private User user;
+
+    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer, User user) {
         this.id = id;
         this.isCasual = isCasual;
         this.isProactive = isProactive;
         this.isExtravert = isExtravert;
         this.isPro = isPro;
         this.employeer = employeer;
-        this.user_id = user_id;
+        this.user = user;
     }
 
     public UserBehavior() {
@@ -47,10 +62,6 @@ public class UserBehavior {
         return employeer;
     }
 
-    public Long getUser_id() {
-        return user_id;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -75,7 +86,11 @@ public class UserBehavior {
         this.employeer = employeer;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
