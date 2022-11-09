@@ -1,6 +1,5 @@
 package com.playerbook.demo.playerHabits;
 
-import com.playerbook.demo.genre.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/playerhabits")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class PlayerHabitsController {
 
     private final PlayerHabitsService playerHabitsService;
