@@ -1,6 +1,5 @@
 package com.playerbook.demo.userGameInfo;
 
-import com.playerbook.demo.userBehavior.UserBehavior;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +40,7 @@ public class UserGameInfoService {
         userGameInfoFound.setUserPseudo(userGameInfo.getUserPseudo());
         userGameInfoFound.setGuild(userGameInfo.getGuild());
         userGameInfoFound.setLevel(userGameInfo.getLevel());
-        userGameInfoFound.setRank(userGameInfo.getRank());
+        userGameInfoFound.setPilouRank(userGameInfo.getPilouRank());
         userGameInfoFound.setDifficulty(userGameInfo.getDifficulty());
         userGameInfoFound.setServerName(userGameInfoFound.getServerName());
 

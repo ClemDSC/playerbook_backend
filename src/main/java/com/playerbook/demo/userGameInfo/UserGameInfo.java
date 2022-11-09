@@ -21,7 +21,7 @@ public class UserGameInfo {
     private String userPseudo;
     private String guild;
     private Long level;
-    private String rank;
+    private String pilouRank;
     private String difficulty;
     private String serverName;
 
@@ -31,12 +31,12 @@ public class UserGameInfo {
     @ManyToOne()
     private Game game;
 
-    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String rank, String difficulty, String serverName, User user, Game game) {
+    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String pilouRank, String difficulty, String serverName, User user, Game game) {
         this.id = id;
         this.userPseudo = userPseudo;
         this.guild = guild;
         this.level = level;
-        this.rank = rank;
+        this.pilouRank = pilouRank;
         this.difficulty = difficulty;
         this.serverName = serverName;
         this.user = user;
@@ -62,8 +62,8 @@ public class UserGameInfo {
         return level;
     }
 
-    public String getRank() {
-        return rank;
+    public String getPilouRank() {
+        return pilouRank;
     }
 
     public String getDifficulty() {
@@ -90,8 +90,8 @@ public class UserGameInfo {
         this.level = level;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setPilouRank(String pilouRank) {
+        this.pilouRank = pilouRank;
     }
 
     public void setDifficulty(String difficulty) {
