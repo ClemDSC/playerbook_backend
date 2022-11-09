@@ -1,5 +1,7 @@
 package com.playerbook.demo.user;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.game.Game;
 import com.playerbook.demo.playerHabits.PlayerHabits;
 import com.playerbook.demo.userBehavior.UserBehavior;
@@ -8,8 +10,15 @@ import com.playerbook.demo.userGameInfo.UserGameInfo;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
     private String linkAvatar;

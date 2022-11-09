@@ -1,11 +1,20 @@
 package com.playerbook.demo.playerHabits;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.user.User;
 
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class PlayerHabits {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private Long frequencyPerWeek;
     private Long sessionInHours;

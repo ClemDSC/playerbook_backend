@@ -1,12 +1,22 @@
 package com.playerbook.demo.userGameInfo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.game.Game;
 import com.playerbook.demo.user.User;
 
-import javax.persistence.ManyToOne;
 
+import javax.persistence.*;
+
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UserGameInfo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String userPseudo;
     private String guild;
