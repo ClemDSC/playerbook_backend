@@ -1,27 +1,46 @@
 package com.playerbook.demo.userGameInfo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.playerbook.demo.game.Game;
+import com.playerbook.demo.user.User;
+
+
+import javax.persistence.*;
+
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UserGameInfo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
     private String userPseudo;
     private String guild;
     private Long level;
-    private String rank;
+    private String pilouRank;
     private String difficulty;
     private String serverName;
-    private Long user_id;
-    private Long game_id;
 
-    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String rank, String difficulty, String serverName, Long user_id, Long game_id) {
+    @ManyToOne()
+    private User user;
+
+    @ManyToOne()
+    private Game game;
+
+    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String pilouRank, String difficulty, String serverName, User user, Game game) {
         this.id = id;
         this.userPseudo = userPseudo;
         this.guild = guild;
         this.level = level;
-        this.rank = rank;
+        this.pilouRank = pilouRank;
         this.difficulty = difficulty;
         this.serverName = serverName;
-        this.user_id = user_id;
-        this.game_id = game_id;
+        this.user = user;
+        this.game = game;
     }
 
     public UserGameInfo() {
@@ -43,8 +62,8 @@ public class UserGameInfo {
         return level;
     }
 
-    public String getRank() {
-        return rank;
+    public String getPilouRank() {
+        return pilouRank;
     }
 
     public String getDifficulty() {
@@ -53,14 +72,6 @@ public class UserGameInfo {
 
     public String getServerName() {
         return serverName;
-    }
-
-    public Long getUser_id() {
-        return user_id;
-    }
-
-    public Long getGame_id() {
-        return game_id;
     }
 
     public void setId(Long id) {
@@ -79,8 +90,8 @@ public class UserGameInfo {
         this.level = level;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setPilouRank(String pilouRank) {
+        this.pilouRank = pilouRank;
     }
 
     public void setDifficulty(String difficulty) {
@@ -91,11 +102,19 @@ public class UserGameInfo {
         this.serverName = serverName;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setGame_id(Long game_id) {
-        this.game_id = game_id;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }

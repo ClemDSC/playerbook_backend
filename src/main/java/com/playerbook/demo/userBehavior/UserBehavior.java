@@ -1,23 +1,38 @@
 package com.playerbook.demo.userBehavior;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.playerbook.demo.user.User;
+
+import javax.persistence.*;
+
+@Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class UserBehavior {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
-    private boolean isCasual;
-    private boolean isProactive;
-    private boolean isExtravert;
-    private boolean isPro;
+    private boolean casual;
+    private boolean proactive;
+    private boolean extravert;
+    private boolean pro;
     private String employeer;
-    private Long user_id;
 
-    public UserBehavior(Long id, boolean isCasual, boolean isProactive, boolean isExtravert, boolean isPro, String employeer, Long user_id) {
+    @OneToOne(mappedBy = "userBehavior")
+    private User user;
+
+    public UserBehavior(Long id, boolean casual, boolean proactive, boolean extravert, boolean pro, String employeer, User user) {
         this.id = id;
-        this.isCasual = isCasual;
-        this.isProactive = isProactive;
-        this.isExtravert = isExtravert;
-        this.isPro = isPro;
+        this.casual = casual;
+        this.proactive = proactive;
+        this.extravert = extravert;
+        this.pro = pro;
         this.employeer = employeer;
-        this.user_id = user_id;
+        this.user = user;
     }
 
     public UserBehavior() {
@@ -27,55 +42,55 @@ public class UserBehavior {
         return id;
     }
 
-    public boolean isCasual() {
-        return isCasual;
-    }
-
-    public boolean isProactive() {
-        return isProactive;
-    }
-
-    public boolean isExtravert() {
-        return isExtravert;
-    }
-
-    public boolean isPro() {
-        return isPro;
-    }
-
     public String getEmployeer() {
         return employeer;
-    }
-
-    public Long getUser_id() {
-        return user_id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setCasual(boolean casual) {
-        isCasual = casual;
-    }
-
-    public void setProactive(boolean proactive) {
-        isProactive = proactive;
-    }
-
-    public void setExtravert(boolean extravert) {
-        isExtravert = extravert;
-    }
-
-    public void setPro(boolean pro) {
-        isPro = pro;
-    }
-
     public void setEmployeer(String employeer) {
         this.employeer = employeer;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isCasual() {
+        return casual;
+    }
+
+    public void setCasual(boolean casual) {
+        this.casual = casual;
+    }
+
+    public boolean isProactive() {
+        return proactive;
+    }
+
+    public void setProactive(boolean proactive) {
+        this.proactive = proactive;
+    }
+
+    public boolean isExtravert() {
+        return extravert;
+    }
+
+    public void setExtravert(boolean extravert) {
+        this.extravert = extravert;
+    }
+
+    public boolean isPro() {
+        return pro;
+    }
+
+    public void setPro(boolean pro) {
+        this.pro = pro;
     }
 }
