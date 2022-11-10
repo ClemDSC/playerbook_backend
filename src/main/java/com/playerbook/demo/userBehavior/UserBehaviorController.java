@@ -1,6 +1,5 @@
 package com.playerbook.demo.userBehavior;
 
-import com.playerbook.demo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/userbehavior")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UserBehaviorController {
 
     private final UserBehaviorService userBehaviorService;
