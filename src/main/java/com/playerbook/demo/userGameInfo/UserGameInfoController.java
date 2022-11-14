@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usergameinfo")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UserGameInfoController {
 
     private final UserGameInfoService userGameInfoService;
