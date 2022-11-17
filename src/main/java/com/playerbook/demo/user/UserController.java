@@ -1,6 +1,5 @@
 package com.playerbook.demo.user;
 
-import com.playerbook.demo.playerHabits.PlayerHabits;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
