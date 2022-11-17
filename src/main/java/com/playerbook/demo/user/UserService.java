@@ -18,7 +18,6 @@ public class UserService {
 
     // create
     public User addUser(User user){
-        System.out.println(user);
         return userRepository.save(user);
     }
 
