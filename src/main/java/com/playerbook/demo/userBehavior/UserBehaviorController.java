@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/userbehavior")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UserBehaviorController {
 
     private final UserBehaviorService userBehaviorService;

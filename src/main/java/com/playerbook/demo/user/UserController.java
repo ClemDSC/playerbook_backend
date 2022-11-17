@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class UserController {
 
     private final UserService userService;
@@ -27,7 +26,7 @@ public class UserController {
     }
 
     // read
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUser() {
         List<User> allUsers = userService.findAllUsers();
         return new ResponseEntity<>(allUsers, HttpStatus.OK);
