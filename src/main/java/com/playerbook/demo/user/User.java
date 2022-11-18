@@ -6,6 +6,7 @@ import com.playerbook.demo.game.Game;
 import com.playerbook.demo.playerHabits.PlayerHabits;
 import com.playerbook.demo.userBehavior.UserBehavior;
 import com.playerbook.demo.userGameInfo.UserGameInfo;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;

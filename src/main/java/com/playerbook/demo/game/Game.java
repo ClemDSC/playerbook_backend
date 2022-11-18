@@ -5,14 +5,12 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.genre.Genre;
 import com.playerbook.demo.user.User;
 import com.playerbook.demo.userGameInfo.UserGameInfo;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Game {
 
     @Id
