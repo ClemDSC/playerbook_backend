@@ -1,6 +1,5 @@
-package com.playerbook.demo.user;
+package com.playerbook.demo.domains.user;
 
-import com.playerbook.demo.playerHabits.PlayerHabits;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +37,8 @@ public class UserService {
                 () -> new IllegalStateException("sorry, id " + id + " not found")
         );
 
-        userFound.setName(user.getName());
+        userFound.setUsername(user.getUsername());
+        userFound.setPassword(user.getPassword());
         userFound.setLinkAvatar(user.getLinkAvatar());
         userFound.setCountry(user.getCountry());
         userFound.setBiography(user.getBiography());

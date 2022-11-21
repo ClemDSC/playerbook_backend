@@ -1,4 +1,4 @@
-package com.playerbook.demo.userGameInfo;
+package com.playerbook.demo.domains.userGameInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

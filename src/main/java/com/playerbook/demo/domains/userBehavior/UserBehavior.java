@@ -1,9 +1,6 @@
-package com.playerbook.demo.userBehavior;
+package com.playerbook.demo.domains.userBehavior;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.playerbook.demo.user.User;
-import org.hibernate.annotations.DynamicUpdate;
+import com.playerbook.demo.domains.user.User;
 
 import javax.persistence.*;
 

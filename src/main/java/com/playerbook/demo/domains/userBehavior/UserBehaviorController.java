@@ -1,4 +1,4 @@
-package com.playerbook.demo.userBehavior;
+package com.playerbook.demo.domains.userBehavior;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

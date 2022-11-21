@@ -1,4 +1,4 @@
-package com.playerbook.demo.userGameInfo;
+package com.playerbook.demo.domains.userGameInfo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

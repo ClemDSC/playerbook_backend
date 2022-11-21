@@ -1,12 +1,11 @@
-package com.playerbook.demo.user;
+package com.playerbook.demo.domains.user;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.playerbook.demo.game.Game;
-import com.playerbook.demo.playerHabits.PlayerHabits;
-import com.playerbook.demo.userBehavior.UserBehavior;
-import com.playerbook.demo.userGameInfo.UserGameInfo;
-import org.hibernate.annotations.DynamicUpdate;
+import com.playerbook.demo.domains.game.Game;
+import com.playerbook.demo.domains.playerHabits.PlayerHabits;
+import com.playerbook.demo.domains.userBehavior.UserBehavior;
+import com.playerbook.demo.domains.userGameInfo.UserGameInfo;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,7 +20,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
-    private String name;
+    private String username;
+    private String password;
     private String linkAvatar;
     private String country;
     private String biography;
@@ -41,7 +41,8 @@ public class User {
 
 
     public User(Long id,
-                String name,
+                String username,
+                String password,
                 String linkAvatar,
                 String country,
                 String biography,
@@ -50,7 +51,8 @@ public class User {
                 List<Game> gameList,
                 List<UserGameInfo> userGameInfo) {
         this.id = id;
-        this.name = name;
+        this.username = username;
+        this.password = password;
         this.linkAvatar = linkAvatar;
         this.country = country;
         this.biography = biography;
@@ -67,9 +69,10 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
+    public String getPassword() { return password; }
 
     public String getLinkAvatar() {
         return linkAvatar;
@@ -103,8 +106,12 @@ public class User {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setLinkAvatar(String linkAvatar) {

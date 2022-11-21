@@ -1,4 +1,4 @@
-package com.playerbook.demo.genre;
+package com.playerbook.demo.domains.genre;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

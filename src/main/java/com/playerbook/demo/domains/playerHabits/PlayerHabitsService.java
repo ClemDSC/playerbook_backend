@@ -1,6 +1,5 @@
-package com.playerbook.demo.playerHabits;
+package com.playerbook.demo.domains.playerHabits;
 
-import com.playerbook.demo.genre.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

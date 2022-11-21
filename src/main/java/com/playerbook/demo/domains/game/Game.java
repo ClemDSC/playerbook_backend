@@ -1,11 +1,8 @@
-package com.playerbook.demo.game;
+package com.playerbook.demo.domains.game;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.playerbook.demo.genre.Genre;
-import com.playerbook.demo.user.User;
-import com.playerbook.demo.userGameInfo.UserGameInfo;
-import org.hibernate.annotations.DynamicUpdate;
+import com.playerbook.demo.domains.genre.Genre;
+import com.playerbook.demo.domains.userGameInfo.UserGameInfo;
+import com.playerbook.demo.domains.user.User;
 
 import javax.persistence.*;
 import java.util.List;

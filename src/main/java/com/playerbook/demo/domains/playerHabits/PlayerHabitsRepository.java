@@ -1,4 +1,4 @@
-package com.playerbook.demo.playerHabits;
+package com.playerbook.demo.domains.playerHabits;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

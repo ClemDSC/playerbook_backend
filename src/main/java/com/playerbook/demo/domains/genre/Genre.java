@@ -1,8 +1,8 @@
-package com.playerbook.demo.genre;
+package com.playerbook.demo.domains.genre;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.playerbook.demo.game.Game;
+import com.playerbook.demo.domains.game.Game;
 
 import javax.persistence.*;
 import java.util.List;

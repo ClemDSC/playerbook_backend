@@ -1,4 +1,4 @@
-package com.playerbook.demo.game;
+package com.playerbook.demo.domains.game;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
