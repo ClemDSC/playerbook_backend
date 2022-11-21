@@ -58,6 +58,7 @@ public class UserGameInfo {
         return guild;
     }
 
+
     public Long getLevel() {
         return level;
     }
