@@ -1,5 +1,6 @@
 package com.playerbook.demo.domains.user;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,15 @@ public class UserController {
 
     // create
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user){
+    public ResponseEntity<User> addUser(@RequestBody User user) throws Exception{
         User newUser = userService.addUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.OK);
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/add-role")
+    public ResponseEntity<?> addRoleToUser(@RequestBody RoleToUserform form) throws Exception{
+        userService.addRoleToUser(form.getUsername(), form.getRoleName());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     // read
@@ -51,4 +58,10 @@ public class UserController {
         userService.deleteUserById(id);
         new ResponseEntity<>(HttpStatus.OK);
     }
+}
+
+@Data
+class RoleToUserform{
+    private String username;
+    private String roleName;
 }

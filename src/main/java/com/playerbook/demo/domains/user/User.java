@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.domains.game.Game;
 import com.playerbook.demo.domains.playerHabits.PlayerHabits;
+import com.playerbook.demo.domains.role.Role;
 import com.playerbook.demo.domains.userBehavior.UserBehavior;
 import com.playerbook.demo.domains.userGameInfo.UserGameInfo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -39,6 +42,9 @@ public class User {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<UserGameInfo> userGameInfo;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roleList = new ArrayList<>();
+
 
     public User(Long id,
                 String username,
@@ -49,7 +55,8 @@ public class User {
                 PlayerHabits playerHabits,
                 UserBehavior userBehavior,
                 List<Game> gameList,
-                List<UserGameInfo> userGameInfo) {
+                List<UserGameInfo> userGameInfo,
+                Collection<Role> roleList) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -60,6 +67,7 @@ public class User {
         this.userBehavior = userBehavior;
         this.gameList = gameList;
         this.userGameInfo = userGameInfo;
+        this.roleList = roleList;
     }
 
     public User() {
@@ -102,6 +110,10 @@ public class User {
         return userGameInfo;
     }
 
+    public Collection<Role> getRoleList() {
+        return roleList;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -140,5 +152,9 @@ public class User {
 
     public void setUserGameInfo(List<UserGameInfo> userGameInfo) {
         this.userGameInfo = userGameInfo;
+    }
+
+    public void setRoleList(Collection<Role> roleList) {
+        this.roleList = roleList;
     }
 }

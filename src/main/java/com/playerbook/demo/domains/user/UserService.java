@@ -1,6 +1,9 @@
 package com.playerbook.demo.domains.user;
 
+import com.playerbook.demo.domains.role.Role;
+import com.playerbook.demo.domains.role.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,15 +12,29 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     // create
-    public User addUser(User user){
-        return userRepository.save(user);
+    public User addUser(User user) throws Exception {
+        User userAlreadyExists = userRepository.findByUsername(user.getUsername());
+        if(userAlreadyExists == null){
+            System.out.println("Utilisateur " + user.getUsername() + " sauvegardé dans la BDD.");
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            return userRepository.save(user);
+        } else {
+            System.out.println("Le pseudo " + user.getUsername() + " est déjà utilisé.");
+            throw new Exception("Username already taken");
+        }
+
     }
 
     // read
@@ -54,6 +71,17 @@ public class UserService {
 
     public void deleteUserById(Long id){
         userRepository.deleteById(id);
+    }
+
+    public void addRoleToUser(String username, String roleName) throws Exception {
+        User userAlreadyExists = userRepository.findByUsername(username);
+        if(userAlreadyExists == null){
+            throw new Exception("Username already taken");
+        } else {
+            Role role = roleRepository.findByName(roleName);
+            userAlreadyExists.getRoleList().add(role);
+            userRepository.save(userAlreadyExists);
+        }
     }
 
 }
