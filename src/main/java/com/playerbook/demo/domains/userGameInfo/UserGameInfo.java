@@ -1,7 +1,7 @@
 package com.playerbook.demo.domains.userGameInfo;
 
 import com.playerbook.demo.domains.game.Game;
-import com.playerbook.demo.domains.user.User;
+import com.playerbook.demo.domains.user.AppUser;
 
 
 import javax.persistence.*;
@@ -21,12 +21,12 @@ public class UserGameInfo {
     private String serverName;
 
     @ManyToOne()
-    private User user;
+    private AppUser appUser;
 
     @ManyToOne()
     private Game game;
 
-    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String pilouRank, String difficulty, String serverName, User user, Game game) {
+    public UserGameInfo(Long id, String userPseudo, String guild, Long level, String pilouRank, String difficulty, String serverName, AppUser appUser, Game game) {
         this.id = id;
         this.userPseudo = userPseudo;
         this.guild = guild;
@@ -34,7 +34,7 @@ public class UserGameInfo {
         this.pilouRank = pilouRank;
         this.difficulty = difficulty;
         this.serverName = serverName;
-        this.user = user;
+        this.appUser = appUser;
         this.game = game;
     }
 
@@ -97,12 +97,12 @@ public class UserGameInfo {
         this.serverName = serverName;
     }
 
-    public User getUser() {
-        return user;
+    public AppUser getUser() {
+        return appUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public Game getGame() {

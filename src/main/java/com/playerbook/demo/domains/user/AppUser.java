@@ -17,7 +17,7 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,17 +46,17 @@ public class User {
     private Collection<Role> roleList = new ArrayList<>();
 
 
-    public User(Long id,
-                String username,
-                String password,
-                String linkAvatar,
-                String country,
-                String biography,
-                PlayerHabits playerHabits,
-                UserBehavior userBehavior,
-                List<Game> gameList,
-                List<UserGameInfo> userGameInfo,
-                Collection<Role> roleList) {
+    public AppUser(Long id,
+                   String username,
+                   String password,
+                   String linkAvatar,
+                   String country,
+                   String biography,
+                   PlayerHabits playerHabits,
+                   UserBehavior userBehavior,
+                   List<Game> gameList,
+                   List<UserGameInfo> userGameInfo,
+                   Collection<Role> roleList) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -70,7 +70,7 @@ public class User {
         this.roleList = roleList;
     }
 
-    public User() {
+    public AppUser() {
     }
 
     public Long getId() {

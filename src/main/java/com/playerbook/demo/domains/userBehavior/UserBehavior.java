@@ -1,6 +1,6 @@
 package com.playerbook.demo.domains.userBehavior;
 
-import com.playerbook.demo.domains.user.User;
+import com.playerbook.demo.domains.user.AppUser;
 
 import javax.persistence.*;
 
@@ -18,16 +18,16 @@ public class UserBehavior {
     private String employeer;
 
     @OneToOne(mappedBy = "userBehavior")
-    private User user;
+    private AppUser appUser;
 
-    public UserBehavior(Long id, boolean casual, boolean proactive, boolean extravert, boolean pro, String employeer, User user) {
+    public UserBehavior(Long id, boolean casual, boolean proactive, boolean extravert, boolean pro, String employeer, AppUser appUser) {
         this.id = id;
         this.casual = casual;
         this.proactive = proactive;
         this.extravert = extravert;
         this.pro = pro;
         this.employeer = employeer;
-        this.user = user;
+        this.appUser = appUser;
     }
 
     public UserBehavior() {
@@ -49,12 +49,12 @@ public class UserBehavior {
         this.employeer = employeer;
     }
 
-    public User getUser() {
-        return user;
+    public AppUser getUser() {
+        return appUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public boolean isCasual() {

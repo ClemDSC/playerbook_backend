@@ -21,9 +21,9 @@ public class UserController {
 
     // create
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(@RequestBody User user) throws Exception{
-        User newUser = userService.addUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    public ResponseEntity<AppUser> addUser(@RequestBody AppUser appUser) throws Exception{
+        AppUser newAppUser = userService.addUser(appUser);
+        return new ResponseEntity<>(newAppUser, HttpStatus.CREATED);
     }
 
     @PostMapping("/add-role")
@@ -34,22 +34,22 @@ public class UserController {
 
     // read
     @GetMapping
-    public ResponseEntity<List<User>> getAllUser() {
-        List<User> allUsers = userService.findAllUsers();
-        return new ResponseEntity<>(allUsers, HttpStatus.OK);
+    public ResponseEntity<List<AppUser>> getAllUser() {
+        List<AppUser> allAppUsers = userService.findAllUsers();
+        return new ResponseEntity<>(allAppUsers, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getOneUser(@PathVariable("id") Long id) {
-        User oneUser = userService.findUserById(id);
-        return new ResponseEntity<>(oneUser, HttpStatus.OK);
+    public ResponseEntity<AppUser> getOneUser(@PathVariable("id") Long id) {
+        AppUser oneAppUser = userService.findUserById(id);
+        return new ResponseEntity<>(oneAppUser, HttpStatus.OK);
     }
 
     // update
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-        User updatedUser = userService.updateUserById(id, user);
-        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    public ResponseEntity<AppUser> updateUser(@PathVariable("id") Long id, @RequestBody AppUser appUser) {
+        AppUser updatedAppUser = userService.updateUserById(id, appUser);
+        return new ResponseEntity<>(updatedAppUser, HttpStatus.OK);
     }
 
     // delete

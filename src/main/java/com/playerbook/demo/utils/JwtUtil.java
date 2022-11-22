@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.playerbook.demo.domains.user.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -31,9 +32,9 @@ public class JwtUtil {
                 .withIssuer(request.getRequestURL().toString());
     }
 
-    public JWTCreator.Builder JwtCommonBase(com.playerbook.demo.domains.user.User user, HttpServletRequest request){
+    public JWTCreator.Builder JwtCommonBase(AppUser appUser, HttpServletRequest request){
         return JWT.create()
-                .withSubject(user.getUsername())
+                .withSubject(appUser.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 60 * 1000))
                 .withIssuer(request.getRequestURL().toString());
     }

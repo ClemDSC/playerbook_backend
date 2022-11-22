@@ -1,6 +1,6 @@
 package com.playerbook.demo.domains.playerHabits;
 
-import com.playerbook.demo.domains.user.User;
+import com.playerbook.demo.domains.user.AppUser;
 
 import javax.persistence.*;
 
@@ -20,9 +20,9 @@ public class PlayerHabits {
     private boolean pvp;
 
     @OneToOne(mappedBy = "playerHabits")
-    private User user;
+    private AppUser appUser;
 
-    public PlayerHabits(Long id, Long frequencyPerWeek, Long sessionInHours, boolean nocturnal, boolean hotBlooded, boolean leader, boolean pve, boolean pvp, User user) {
+    public PlayerHabits(Long id, Long frequencyPerWeek, Long sessionInHours, boolean nocturnal, boolean hotBlooded, boolean leader, boolean pve, boolean pvp, AppUser appUser) {
         this.id = id;
         this.frequencyPerWeek = frequencyPerWeek;
         this.sessionInHours = sessionInHours;
@@ -31,7 +31,7 @@ public class PlayerHabits {
         this.leader = leader;
         this.pve = pve;
         this.pvp = pvp;
-        this.user = user;
+        this.appUser = appUser;
     }
 
     public PlayerHabits() {
@@ -61,12 +61,12 @@ public class PlayerHabits {
         this.sessionInHours = sessionInHours;
     }
 
-    public User getUser() {
-        return user;
+    public AppUser getUser() {
+        return appUser;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(AppUser appUser) {
+        this.appUser = appUser;
     }
 
     public boolean isNocturnal() {

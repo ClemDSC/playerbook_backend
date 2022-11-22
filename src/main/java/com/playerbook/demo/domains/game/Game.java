@@ -1,8 +1,8 @@
 package com.playerbook.demo.domains.game;
 
 import com.playerbook.demo.domains.genre.Genre;
+import com.playerbook.demo.domains.user.AppUser;
 import com.playerbook.demo.domains.userGameInfo.UserGameInfo;
-import com.playerbook.demo.domains.user.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,20 +22,20 @@ public class Game {
     private List<Genre> genreList;
 
     @ManyToMany(mappedBy = "gameList")
-    private List<User> userList;
+    private List<AppUser> appUserList;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "game_id", referencedColumnName = "id")
     private List<UserGameInfo> userGameInfoList;
 
 
-    public Game(Long id, String name, String photoUrl, String gameUrl, List<Genre> genreList, List<User> userList, List<UserGameInfo> userGameInfoList) {
+    public Game(Long id, String name, String photoUrl, String gameUrl, List<Genre> genreList, List<AppUser> appUserList, List<UserGameInfo> userGameInfoList) {
         this.id = id;
         this.name = name;
         this.photoUrl = photoUrl;
         this.gameUrl = gameUrl;
         this.genreList = genreList;
-        this.userList = userList;
+        this.appUserList = appUserList;
         this.userGameInfoList = userGameInfoList;
     }
 
@@ -62,8 +62,8 @@ public class Game {
         return genreList;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<AppUser> getUserList() {
+        return appUserList;
     }
 
     public List<UserGameInfo> getUserGameInfoList() {
@@ -90,8 +90,8 @@ public class Game {
         this.genreList = genreList;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUserList(List<AppUser> appUserList) {
+        this.appUserList = appUserList;
     }
 
     public void setUserGameInfoList(List<UserGameInfo> userGameInfoList) {
