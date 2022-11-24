@@ -29,6 +29,7 @@ public class UserService implements UserDetailsService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+    // login / auth
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -48,7 +49,7 @@ public class UserService implements UserDetailsService {
         return new User(appUserAlreadyExists.getUsername(), appUserAlreadyExists.getPassword(), authorities);
     }
 
-    // create
+    // create / register
     public AppUser addUser(AppUser appUser) throws Exception {
         AppUser appUserAlreadyExists = userRepository.findByUsername(appUser.getUsername());
         if(appUserAlreadyExists == null){
