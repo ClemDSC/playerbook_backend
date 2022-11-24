@@ -54,9 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers(POST,"/login").permitAll()
                 .antMatchers(GET,"/api/user").permitAll()
-                .antMatchers(POST,"/api/game").hasRole(ERole.ADMIN.name())
-                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.USER.name())
-                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.ADMIN.name())
+                .antMatchers(POST,"/api/game/add").hasRole(ERole.ADMIN.name())
+                .antMatchers(POST,"/api/usergameinfo/add").hasRole(ERole.USER.name())
+                .antMatchers(POST,"/api/usergameinfo/add").hasRole(ERole.ADMIN.name())
                 .antMatchers("/admin/*").hasRole(ERole.ADMIN.name())
                 .anyRequest()
                 .authenticated();
