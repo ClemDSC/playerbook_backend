@@ -21,6 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
@@ -47,15 +48,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+        http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+        http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+
         http.authorizeHttpRequests()
                 .antMatchers(POST,"/login").permitAll()
-                .antMatchers("/api/*").permitAll()
+                .antMatchers(GET,"/api/user").permitAll()
+                .antMatchers(POST,"/api/game").hasRole(ERole.ADMIN.name())
+                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.USER.name())
+                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.ADMIN.name())
                 .antMatchers("/admin/*").hasRole(ERole.ADMIN.name())
                 .anyRequest()
                 .authenticated();
 
-        http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
-        http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+       // http.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+       // http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
