@@ -1,5 +1,6 @@
 package com.playerbook.demo.security;
 
+import com.playerbook.demo.domains.role.ERole;
 import com.playerbook.demo.middleware.CustomAuthenticationFilter;
 import com.playerbook.demo.middleware.JwtAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers(POST,"/login").permitAll()
                 .antMatchers(GET,"/api/user").permitAll()
+                .antMatchers(POST,"/api/game").hasRole(ERole.ADMIN.name())
+                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.USER.name())
+                .antMatchers(POST,"/api/usergameinfo").hasRole(ERole.ADMIN.name())
+                .antMatchers("/admin/*").hasRole(ERole.ADMIN.name())
                 .anyRequest()
                 .authenticated();
 
