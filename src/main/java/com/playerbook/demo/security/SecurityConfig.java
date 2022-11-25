@@ -21,8 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -53,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(GET,"/api/user").permitAll()
                 .antMatchers(POST,"/api/game/add").hasRole(ERole.ADMIN.name())
                 .antMatchers(POST,"/api/usergameinfo/add").hasRole(ERole.USER.name())
+                .antMatchers(PUT,"/api/usergameinfo/{id}").hasRole(ERole.USER.name())
                 .antMatchers(POST,"/api/usergameinfo/add").hasRole(ERole.ADMIN.name())
                 .antMatchers("/admin/*").hasRole(ERole.ADMIN.name())
                 .anyRequest()
