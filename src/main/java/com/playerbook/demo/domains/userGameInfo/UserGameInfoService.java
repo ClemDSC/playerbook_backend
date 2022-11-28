@@ -1,5 +1,7 @@
 package com.playerbook.demo.domains.userGameInfo;
 
+import com.playerbook.demo.domains.game.Game;
+import com.playerbook.demo.domains.game.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,14 +11,21 @@ import java.util.List;
 public class UserGameInfoService {
 
     private final UserGameInfoRepository userGameInfoRepository;
+    private final GameRepository gameRepository;
 
     @Autowired
-    public UserGameInfoService(UserGameInfoRepository userGameInfoRepository) {
+    public UserGameInfoService(UserGameInfoRepository userGameInfoRepository, GameRepository gameRepository) {
         this.userGameInfoRepository = userGameInfoRepository;
+        this.gameRepository = gameRepository;
     }
 
+
     // create
-    public UserGameInfo addUserGameInfo(UserGameInfo userGameInfo){
+    public UserGameInfo addUserGameInfo(UserGameInfo userGameInfo, Long id) {
+        Game gameFound = gameRepository.findById(id).orElseThrow(
+                () -> new IllegalStateException("sorry, id " + id + " not found")
+        );
+        userGameInfo.setGame(gameFound);
         return userGameInfoRepository.save(userGameInfo);
     }
 

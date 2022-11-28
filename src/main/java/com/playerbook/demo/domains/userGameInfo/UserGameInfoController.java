@@ -19,9 +19,9 @@ public class UserGameInfoController {
     }
 
     // create
-    @PostMapping("/add")
-    public ResponseEntity<UserGameInfo> addUserGameInfo(@RequestBody UserGameInfo userGameInfo){
-        UserGameInfo newUserGameInfo = userGameInfoService.addUserGameInfo(userGameInfo);
+    @PostMapping("/add/{id}")
+    public ResponseEntity<UserGameInfo> addUserGameInfo(@RequestBody UserGameInfo userGameInfo, @PathVariable("id") Long id){
+        UserGameInfo newUserGameInfo = userGameInfoService.addUserGameInfo(userGameInfo, id);
         return new ResponseEntity<>(newUserGameInfo, HttpStatus.OK);
     }
 
