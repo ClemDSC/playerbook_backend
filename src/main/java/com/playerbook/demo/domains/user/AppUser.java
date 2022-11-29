@@ -38,12 +38,12 @@ public class AppUser {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Game> gameList;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private List<UserGameInfo> userGameInfo;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roleList = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "app_user_id", referencedColumnName = "id")
+    private List<UserGameInfo> userGameInfos;
 
 
     public AppUser(Long id,
@@ -66,7 +66,7 @@ public class AppUser {
         this.playerHabits = playerHabits;
         this.userBehavior = userBehavior;
         this.gameList = gameList;
-        this.userGameInfo = userGameInfo;
+        this.userGameInfos = userGameInfo;
         this.roleList = roleList;
     }
 
@@ -107,7 +107,7 @@ public class AppUser {
     }
 
     public List<UserGameInfo> getUserGameInfo() {
-        return userGameInfo;
+        return userGameInfos;
     }
 
     public Collection<Role> getRoleList() {
@@ -151,7 +151,7 @@ public class AppUser {
     }
 
     public void setUserGameInfo(List<UserGameInfo> userGameInfo) {
-        this.userGameInfo = userGameInfo;
+        this.userGameInfos = userGameInfo;
     }
 
     public void setRoleList(Collection<Role> roleList) {
