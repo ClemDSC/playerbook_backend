@@ -1,5 +1,7 @@
 package com.playerbook.demo.domains.game;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.playerbook.demo.domains.genre.Genre;
 import com.playerbook.demo.domains.user.AppUser;
 import com.playerbook.demo.domains.userGameInfo.UserGameInfo;
@@ -8,6 +10,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Game {
 
     @Id
